@@ -1,33 +1,191 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Анна Аннушкина - Фотограф</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анна Аннушкина — фотограф</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <!-- TODO: добавьте навигацию по разделам страницы -->
-    </header>
 
-    <main>
-        <section class="starter-note" aria-labelledby="starter-title">
-            <h1 id="starter-title">Стартовая страница нулевого занятия</h1>
-            <p>Замените этот блок содержимым портфолио фотографа по заданию в README.</p>
-        </section>
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="#top" class="logo">Анна <span>Аннушкина</span></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <!-- TODO: добавьте раздел с информацией о фотографе -->
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-divider"></div>
+      <h1>Анна <em>Аннушкина</em></h1>
+      <p class="hero-subtitle">Фотограф портретной, свадебной и природной съёмки.<br>Ловлю свет, эмоции и тишину момента.</p>
+      <a href="#gallery" class="btn">Смотреть работы</a>
+    </div>
+  </section>
 
-        <!-- TODO: добавьте галерею из локальных изображений -->
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about">
+      <div class="about-image">
+        <img src="./images/about.jpeg" alt="Анна Аннушкина — фотограф">
+      </div>
+      <div class="about-text">
+        <h2>Обо мне</h2>
+        <p>Меня зовут Анна, и уже более 8 лет я рассказываю истории через объектив камеры. Верю, что каждый кадр — это маленькая жизнь, застывшая во времени.</p>
+        <p>Работаю в Москве и готова выезжать в любую точку мира. Снимаю портреты, свадьбы и природу — там, где есть настоящий свет и искренние эмоции.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">лет опыта</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">съёмок</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">15</div>
+            <div class="stat-label">стран</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- TODO: добавьте контактную информацию -->
-    </main>
+  <!-- SERVICES -->
+  <section id="services" class="services-section">
+    <div class="section-header">
+      <h2>Услуги</h2>
+      <p>Выберите формат, который подходит именно вам</p>
+    </div>
+    <ul class="services">
+      <li>
+        <div class="service-icon">✦</div>
+        <h3>Портретная съёмка</h3>
+        <p>Индивидуальные и семейные портреты в студии и на природе. Помогу с образами и позированием.</p>
+      </li>
+      <li>
+        <div class="service-icon">♥</div>
+        <h3>Свадебная съёмка</h3>
+        <p>Полный день или отдельные моменты: сборы, церемония, прогулка. Живые, естественные кадры.</p>
+      </li>
+      <li>
+        <div class="service-icon">❋</div>
+        <h3>Природа</h3>
+        <p>Пейзажи, рассветы и детали природы. Авторские серии и печать для интерьера.</p>
+      </li>
+    </ul>
+  </section>
 
-    <footer>
-        <!-- TODO: добавьте подвал страницы -->
-    </footer>
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery-section">
+    <div class="section-header">
+      <h2>Галерея</h2>
+      <p>Избранные работы из разных серий</p>
+    </div>
 
-    <script src="js/script.js" defer></script>
+    <div class="filters">
+      <button class="filter-btn is-active" data-filter="all">Все</button>
+      <button class="filter-btn" data-filter="portraits">Портреты</button>
+      <button class="filter-btn" data-filter="weddings">Свадьбы</button>
+      <button class="filter-btn" data-filter="nature">Природа</button>
+    </div>
+
+    <ul class="gallery">
+      <li class="gallery-item" data-category="portraits">
+        <button class="gallery-thumb" data-label="Портрет · Студия">
+          <img src="./images/portrait_2.jpg" alt="Портрет">
+        </button>
+      </li>
+      <li class="gallery-item" data-category="weddings">
+        <button class="gallery-thumb" data-label="Свадьба · Пальмы">
+          <img src="./images/wedding_2.jpg" alt="Свадьба">
+        </button>
+      </li>
+      <li class="gallery-item" data-category="weddings">
+        <button class="gallery-thumb" data-label="Свадьба · Букет">
+          <img src="./images/wedding_1.jpg" alt="Букет">
+        </button>
+      </li>
+      <li class="gallery-item" data-category="portraits">
+        <button class="gallery-thumb" data-label="Портрет · Рыжая">
+          <img src="./images/portrait_1.jpg" alt="Портрет">
+        </button>
+      </li>
+      <li class="gallery-item" data-category="nature">
+        <button class="gallery-thumb" data-label="Природа · Лес">
+          <img src="./images/nature_1.jpg" alt="Лес">
+        </button>
+      </li>
+      <li class="gallery-item" data-category="nature">
+        <button class="gallery-thumb" data-label="Природа · Рассвет">
+          <img src="./images/nature_2.jpg" alt="Рассвет">
+        </button>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACTS -->
+  <section id="contacts" class="contacts-section">
+    <div class="section-header">
+      <h2>Контакты</h2>
+      <p>Напишите мне — обсудим вашу историю</p>
+    </div>
+    <div class="contacts">
+      <div class="contact-info">
+        <h3>Свяжитесь со мной</h3>
+        <p><span class="icon">✆</span> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+        <p><span class="icon">✉</span> <a href="mailto:anna@example.com">anna@example.com</a></p>
+        <p><span class="icon">◉</span> <a href="#">Instagram</a></p>
+        <p><span class="icon"></span> <a href="#">Telegram</a></p>
+        <p class="contact-note">Отвечаю в течение 24 часов. Работаю по всей России и за рубежом.</p>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name">Имя *</label>
+          <input type="text" id="name" name="name" required>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="message">Сообщение *</label>
+          <textarea id="message" name="message" required></textarea>
+          <span class="error"></span>
+        </div>
+        <button type="submit" class="btn">Отправить</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    © 2026 Анна Аннушкина. Сделано с <span class="heart">♥</span> и вниманием к деталям.
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <figure class="modal-figure">
+      <img id="modalImage" src="" alt="">
+      <button class="modal-close" data-close aria-label="Закрыть">×</button>
+      <button class="modal-nav modal-prev" data-prev aria-label="Предыдущее">‹</button>
+      <button class="modal-nav modal-next" data-next aria-label="Следующее">›</button>
+    </figure>
+  </div>
+
+  <script src="./js/script.js"></script>
 </body>
 </html>
