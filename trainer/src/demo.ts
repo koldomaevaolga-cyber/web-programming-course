@@ -25,7 +25,7 @@ const react1: Task = {
 
 // --- Основной набор ---
 
-const trainingSet: TrainingSet = {
+export const trainingSet: TrainingSet = {
   id: "set-1",
   title: "Основы TypeScript и React",
   tasks: [ts1, react1],
