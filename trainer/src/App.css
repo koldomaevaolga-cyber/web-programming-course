@@ -1,15 +1,9 @@
-* {
-  box-sizing: border-box;
-}
+/* Существующие стили A2 остаются без изменений */
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: #f5f6f8;
   color: #1f2328;
   line-height: 1.5;
@@ -26,15 +20,8 @@ body {
   padding-bottom: 12px;
   margin-bottom: 20px;
 }
-.module-title {
-  margin: 0 0 4px;
-  font-size: 1.5rem;
-}
-.module-count {
-  margin: 0;
-  color: #57606a;
-  font-size: 0.9rem;
-}
+.module-title { margin: 0 0 4px; font-size: 1.5rem; }
+.module-count { margin: 0; color: #57606a; font-size: 0.9rem; }
 
 .app-layout {
   display: grid;
@@ -42,9 +29,7 @@ body {
   gap: 20px;
 }
 @media (max-width: 640px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-  }
+  .app-layout { grid-template-columns: 1fr; }
 }
 
 .task-list {
@@ -67,30 +52,35 @@ body {
   font: inherit;
   color: inherit;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
 }
-.task-list-item:hover {
-  border-color: #0969da;
-}
+.task-list-item:hover { border-color: #0969da; }
 .task-list-item:focus-visible {
   outline: 2px solid #0969da;
   outline-offset: 2px;
 }
-.task-list-item.is-selected {
+.task-list-item.is-current {
   border-color: #0969da;
   background: #ddf4ff;
 }
+.task-list-item.is-filled {
+  border-left: 3px solid #2da44e;
+}
 
-.task-list-kind {
-  font-size: 0.75rem;
+.task-list-number {
+  font-weight: 600;
   color: #57606a;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  min-width: 20px;
 }
 .task-list-question {
-  font-size: 0.95rem;
+  flex: 1;
+  font-size: 0.9rem;
   word-break: break-word;
+}
+.task-list-status {
+  font-size: 1.1rem;
+  color: #57606a;
 }
 
 .task-card {
@@ -98,6 +88,7 @@ body {
   border: 1px solid #d0d7de;
   border-radius: 10px;
   padding: 20px;
+  margin-bottom: 16px;
 }
 .task-card-header {
   display: flex;
@@ -136,7 +127,16 @@ body {
   white-space: pre;
 }
 
-.task-card-options {
+/* Стили форм L3 */
+.task-form {
+  margin-top: 16px;
+}
+.task-form-legend {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1f2328;
+}
+.task-form-options {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -144,29 +144,261 @@ body {
   flex-direction: column;
   gap: 8px;
 }
-.task-card-option {
+.task-form-option {
+  padding: 0;
+}
+.task-form-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   padding: 10px 12px;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   background: #f6f8fa;
-  display: flex;
-  gap: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.task-form-label:hover {
+  background: #eaeef2;
+}
+.task-form-label input[type="radio"] {
+  margin-top: 2px;
+  cursor: pointer;
+}
+.task-form-label input[type="radio"]:checked + .task-form-option-text {
+  font-weight: 600;
+  color: #0969da;
+}
+.task-form-option-text {
+  flex: 1;
   word-break: break-word;
 }
-.task-card-option-id {
+
+.task-form-textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 80px;
+}
+.task-form-textarea:focus {
+  outline: 2px solid #0969da;
+  outline-offset: -1px;
+  border-color: #0969da;
+}
+
+/* Навигация */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+.nav-button {
+  padding: 8px 16px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.95rem;
+  color: inherit;
+  transition: background 0.15s;
+}
+.nav-button:hover:not(:disabled) {
+  background: #f6f8fa;
+  border-color: #0969da;
+}
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.nav-button-finish {
+  background: #2da44e;
+  color: #ffffff;
+  border-color: #2da44e;
+}
+.nav-button-finish:hover:not(:disabled) {
+  background: #2c974b;
+}
+.nav-counter {
+  font-size: 0.9rem;
+  color: #57606a;
+  font-weight: 600;
+}
+
+/* Модальное окно */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.modal {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-title {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+  color: #1f2328;
+}
+.modal-text {
+  margin: 0 0 12px;
+  color: #57606a;
+}
+.modal-list {
+  margin: 12px 0;
+  padding-left: 20px;
+  color: #1f2328;
+}
+.modal-list li {
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.modal-button {
+  padding: 8px 16px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.95rem;
+}
+.modal-button-cancel:hover {
+  background: #f6f8fa;
+}
+.modal-button-confirm {
+  background: #cf222e;
+  color: #ffffff;
+  border-color: #cf222e;
+}
+.modal-button-confirm:hover {
+  background: #a40e26;
+}
+
+/* Обзор */
+.review {
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  padding: 20px;
+}
+.review-title {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+}
+.review-list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.review-item {
+  padding: 16px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #f6f8fa;
+}
+.review-item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+.review-item-number {
   font-weight: 600;
   color: #57606a;
 }
-
-.task-card-hint {
-  margin: 0;
-  padding: 12px;
+.review-item-topic {
+  background: #eaeef2;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #57606a;
+}
+.review-item-status {
+  margin-left: auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.review-item-status.is-filled {
+  background: #dafbe1;
+  color: #1a7f37;
+}
+.review-item-status.is-empty {
   background: #fff8c5;
-  border: 1px solid #d4a72c;
-  border-radius: 8px;
-  color: #57430b;
+  color: #9a6700;
+}
+.review-item-question {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  word-break: break-word;
+}
+.review-item-code {
+  background: #0d1117;
+  color: #e6edf3;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  margin: 0 0 12px;
+}
+.review-item-code code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: pre;
+}
+.review-item-answer {
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  word-break: break-word;
+}
+.review-item-empty {
+  color: #8b949e;
+  font-style: italic;
+}
+.review-restart {
+  padding: 10px 20px;
+  background: #0969da;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1rem;
+}
+.review-restart:hover {
+  background: #0550ae;
 }
 
+/* Пустое состояние */
 .empty-state {
   padding: 40px 20px;
   text-align: center;
